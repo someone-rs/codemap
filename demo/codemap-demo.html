@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>codemap — codemap</title><style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0d1117;color:#e6edf3}
+header{padding:28px 32px 8px}h1{margin:0 0 6px;font-size:28px}.sub{color:#8b949e;margin:0 0 18px}
+.cards{display:flex;gap:12px;flex-wrap:wrap;padding:0 32px}.card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:14px 18px;min-width:130px}
+.card b{display:block;font-size:22px}.card span{color:#8b949e;font-size:13px}
+section{padding:18px 32px}h2{font-size:20px;margin:6px 0 14px}
+.bar-row{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:14px}.bar-row .ln{width:110px;color:#c9d1d9}
+.bar-row .bar{flex:1;height:14px;background:#21262d;border-radius:7px;overflow:hidden}.bar-row .fill{height:100%}
+.bar-row .v{width:150px;text-align:right;color:#8b949e;font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-size:14px}th{text-align:left;color:#8b949e;padding:8px;border-bottom:1px solid #30363d}
+td{padding:7px 8px;border-bottom:1px solid #21262d;font-variant-numeric:tabular-nums}tr:hover td{background:#161b22}
+a{color:#58a6ff;text-decoration:none}
+#crumbs{margin:0 0 10px;color:#8b949e;font-size:14px}#crumbs a{cursor:pointer}#crumbs a:hover{text-decoration:underline}
+#treemap{position:relative;width:100%;height:560px;background:#010409;border:1px solid #30363d;border-radius:10px;overflow:hidden}
+.tm{position:absolute;overflow:hidden;border:1px solid rgba(0,0,0,.35);border-radius:3px;cursor:pointer}
+.tm.dir{background:#161b22;cursor:pointer}.tm.dir>.lbl{font-size:12px;color:#8b949e;padding:3px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tm.file{color:#fff}.tm.file>.lbl{font-size:12px;padding:4px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+#tip{position:fixed;display:none;pointer-events:none;background:#161b22;border:1px solid #30363d;border-radius:8px;padding:8px 10px;font-size:13px;z-index:99;max-width:320px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+#tip b{display:block;margin-bottom:2px}#tip span{color:#8b949e}
+.donut-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}.legend{font-size:14px}.legend div{margin:4px 0}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
+footer{padding:10px 32px 28px;color:#8b949e;font-size:13px}
+</style></head>
+<body>
+<header><h1>🗺️ codemap — codemap</h1>
+<p class="sub">Interactive map of your codebase. Click a directory tile to zoom in.</p></header>
+<div class="cards">
+<div class="card"><b>11</b><span>files</span></div>
+<div class="card"><b>919</b><span>lines of code</span></div>
+<div class="card"><b>35.1 KB</b><span>total size</span></div>
+<div class="card"><b>Python</b><span>top language</span></div>
+</div>
+<section><h2>🗂️ Treemap (by file size)</h2>
+<div id="crumbs"></div><div id="treemap"></div><div id="tip"></div></section>
+<section><h2>🌐 Languages</h2><div class="donut-wrap"><svg width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="none" stroke="#3572A5" stroke-width="28" stroke-dasharray="436.53 66.12" stroke-dashoffset="-0.00" transform="rotate(-90 100 100)"/><circle cx="100" cy="100" r="80" fill="none" stroke="#083fa1" stroke-width="28" stroke-dasharray="41.07 461.59" stroke-dashoffset="-436.53" transform="rotate(-90 100 100)"/><circle cx="100" cy="100" r="80" fill="none" stroke="#cccccc" stroke-width="28" stroke-dasharray="14.92 487.74" stroke-dashoffset="-477.60" transform="rotate(-90 100 100)"/><circle cx="100" cy="100" r="80" fill="none" stroke="#9c4221" stroke-width="28" stroke-dasharray="10.14 492.52" stroke-dashoffset="-492.52" transform="rotate(-90 100 100)"/></svg>
+<div class="legend"><div><span class="dot" style="background:#3572A5"></span>Python — 30.5 KB</div><div><span class="dot" style="background:#083fa1"></span>Markdown — 2.9 KB</div><div><span class="dot" style="background:#cccccc"></span>Other — 1.0 KB</div><div><span class="dot" style="background:#9c4221"></span>TOML — 725 B</div></div></div><div class="bar-row"><span class="ln">Python</span><span class="bar"><span class="fill" style="width:86.8%;background:#3572A5"></span></span><span class="v">86.8% &middot; 30.5 KB &middot; 8 files</span></div><div class="bar-row"><span class="ln">Markdown</span><span class="bar"><span class="fill" style="width:8.2%;background:#083fa1"></span></span><span class="v">8.2% &middot; 2.9 KB &middot; 1 files</span></div><div class="bar-row"><span class="ln">Other</span><span class="bar"><span class="fill" style="width:3.0%;background:#cccccc"></span></span><span class="v">3.0% &middot; 1.0 KB &middot; 1 files</span></div><div class="bar-row"><span class="ln">TOML</span><span class="bar"><span class="fill" style="width:2.0%;background:#9c4221"></span></span><span class="v">2.0% &middot; 725 B &middot; 1 files</span></div></section>
+<section><h2>📦 Biggest files</h2><table>
+<tr><th>File</th><th>Language</th><th>Size</th><th>LOC</th><th>Last change</th></tr>
+<tr><td>src/codemap/report.py</td><td>Python</td><td>11.9 KB</td><td>266</td><td>2026-10-25</td></tr><tr><td>tests/test_codemap.py</td><td>Python</td><td>7.5 KB</td><td>181</td><td>2026-10-25</td></tr><tr><td>src/codemap/scanner.py</td><td>Python</td><td>3.8 KB</td><td>120</td><td>2026-10-25</td></tr><tr><td>src/codemap/languages.py</td><td>Python</td><td>2.9 KB</td><td>124</td><td>2026-10-25</td></tr><tr><td>README.md</td><td>Markdown</td><td>2.9 KB</td><td>59</td><td>2026-10-25</td></tr><tr><td>src/codemap/cli.py</td><td>Python</td><td>2.2 KB</td><td>63</td><td>2026-10-25</td></tr><tr><td>src/codemap/gitinfo.py</td><td>Python</td><td>2.0 KB</td><td>57</td><td>2026-10-25</td></tr><tr><td>LICENSE</td><td>Other</td><td>1.0 KB</td><td>17</td><td>2026-10-25</td></tr><tr><td>pyproject.toml</td><td>TOML</td><td>725 B</td><td>24</td><td>2026-10-25</td></tr><tr><td>src/codemap/__main__.py</td><td>Python</td><td>121 B</td><td>4</td><td>2026-10-25</td></tr><tr><td>src/codemap/__init__.py</td><td>Python</td><td>102 B</td><td>4</td><td>2026-10-25</td></tr></table></section>
+<section><h2>🔥 Most-changed files (git history)</h2><table><tr><th>File</th><th>Language</th><th>Size</th><th>LOC</th><th>Last change</th></tr><tr><td>LICENSE</td><td>Other</td><td>1.0 KB</td><td>17</td><td>2026-10-25</td></tr><tr><td>README.md</td><td>Markdown</td><td>2.9 KB</td><td>59</td><td>2026-10-25</td></tr><tr><td>pyproject.toml</td><td>TOML</td><td>725 B</td><td>24</td><td>2026-10-25</td></tr><tr><td>src/codemap/__init__.py</td><td>Python</td><td>102 B</td><td>4</td><td>2026-10-25</td></tr><tr><td>src/codemap/__main__.py</td><td>Python</td><td>121 B</td><td>4</td><td>2026-10-25</td></tr><tr><td>src/codemap/cli.py</td><td>Python</td><td>2.2 KB</td><td>63</td><td>2026-10-25</td></tr><tr><td>src/codemap/gitinfo.py</td><td>Python</td><td>2.0 KB</td><td>57</td><td>2026-10-25</td></tr><tr><td>src/codemap/languages.py</td><td>Python</td><td>2.9 KB</td><td>124</td><td>2026-10-25</td></tr><tr><td>src/codemap/report.py</td><td>Python</td><td>11.9 KB</td><td>266</td><td>2026-10-25</td></tr><tr><td>src/codemap/scanner.py</td><td>Python</td><td>3.8 KB</td><td>120</td><td>2026-10-25</td></tr><tr><td>tests/test_codemap.py</td><td>Python</td><td>7.5 KB</td><td>181</td><td>2026-10-25</td></tr></table></section>
+<footer>Generated by <a href="https://github.com/someone-rs/codemap">codemap</a> — single-file report, no external assets.</footer>
+<script>
+const DATA = {"name": "codemap", "tree": {"name": "", "size": 35949, "children": [{"name": "src", "size": 23578, "children": [{"name": "codemap", "size": 23578, "children": [{"name": "report.py", "size": 12141, "path": "src/codemap/report.py", "loc": 266, "language": "Python", "commits": 1, "color": "#3572A5"}, {"name": "scanner.py", "size": 3918, "path": "src/codemap/scanner.py", "loc": 120, "language": "Python", "commits": 1, "color": "#3572A5"}, {"name": "languages.py", "size": 2971, "path": "src/codemap/languages.py", "loc": 124, "language": "Python", "commits": 1, "color": "#3572A5"}, {"name": "cli.py", "size": 2254, "path": "src/codemap/cli.py", "loc": 63, "language": "Python", "commits": 1, "color": "#3572A5"}, {"name": "gitinfo.py", "size": 2071, "path": "src/codemap/gitinfo.py", "loc": 57, "language": "Python", "commits": 1, "color": "#3572A5"}, {"name": "__main__.py", "size": 121, "path": "src/codemap/__main__.py", "loc": 4, "language": "Python", "commits": 1, "color": "#3572A5"}, {"name": "__init__.py", "size": 102, "path": "src/codemap/__init__.py", "loc": 4, "language": "Python", "commits": 1, "color": "#3572A5"}]}]}, {"name": "tests", "size": 7642, "children": [{"name": "test_codemap.py", "size": 7642, "path": "tests/test_codemap.py", "loc": 181, "language": "Python", "commits": 1, "color": "#3572A5"}]}, {"name": "README.md", "size": 2937, "path": "README.md", "loc": 59, "language": "Markdown", "commits": 1, "color": "#083fa1"}, {"name": "LICENSE", "size": 1067, "path": "LICENSE", "loc": 17, "language": "Other", "commits": 1, "color": "#cccccc"}, {"name": "pyproject.toml", "size": 725, "path": "pyproject.toml", "loc": 24, "language": "TOML", "commits": 1, "color": "#9c4221"}]}};
+const tip = document.getElementById('tip');
+const box = document.getElementById('treemap');
+const crumbs = document.getElementById('crumbs');
+let path = [];
+function nodeAt(p){let n=DATA.tree;for(const s of p){n=n.children.find(c=>c.name===s);}return n;}
+function fmt(n){if(n<1024)return n+' B';if(n<1048576)return (n/1024).toFixed(1)+' KB';return (n/1048576).toFixed(2)+' MB';}
+function render(){
+  const root=nodeAt(path);
+  box.innerHTML='';
+  crumbs.innerHTML='';
+  const home=document.createElement('a');
+  home.textContent=DATA.name;
+  home.onclick=()=>go([]);
+  crumbs.appendChild(home);
+  path.forEach((s,i)=>{
+    crumbs.appendChild(document.createTextNode(' / '));
+    const a=document.createElement('a');
+    a.textContent=s;
+    const target=path.slice(0,i+1);
+    a.onclick=()=>go(target);
+    crumbs.appendChild(a);
+  });
+  layout(root, box, box.clientWidth, box.clientHeight);
+}
+function go(p){path=p;render();}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function layout(node, el, w, h){
+  const kids=[...(node.children||[])].sort((a,b)=>b.size-a.size);
+  if(!kids.length){
+    const d=document.createElement('div');d.className='tm file';
+    d.style.cssText='left:0;top:0;width:100%;height:100%;background:'+node.color;
+    d.innerHTML='<div class="lbl">'+esc(node.name)+'</div>';
+    tipify(d,node);el.appendChild(d);return;
+  }
+  let x=0,y=0,rw=w,rh=h;
+  const horizontal = rw>=rh;
+  const total=kids.reduce((s,c)=>s+c.size,0)||1;
+  let headerH=0;
+  if(node!==DATA.tree || path.length){
+    const hd=document.createElement('div');hd.className='lbl';hd.textContent=node.name;
+    hd.style.cssText='font-size:12px;color:#8b949e;padding:3px 6px;';
+    el.appendChild(hd);headerH=20;rh-=headerH;y+=headerH;
+  }
+  for(const k of kids){
+    const frac=k.size/total;
+    const cw=horizontal?rw*frac:rw, ch=horizontal?rh:rh*frac;
+    if(cw<2||ch<2) continue;
+    const d=document.createElement('div');
+    const isDir=!!k.children;
+    d.className='tm '+(isDir?'dir':'file');
+    d.style.cssText='left:'+x+'px;top:'+y+'px;width:'+cw+'px;height:'+ch+'px;'+(isDir?'':'background:'+k.color);
+    if(isDir){
+      d.onclick=e=>{e.stopPropagation();path=[...path,k.name];render();};
+      d.innerHTML='<div class="lbl">'+esc(k.name)+'</div>';
+      const inner=document.createElement('div');
+      inner.style.cssText='position:absolute;left:0;right:0;top:20px;bottom:0;';
+      d.appendChild(inner);
+      layout(k,inner,Math.max(cw-2,1),Math.max(ch-22,1));
+    } else {
+      if(cw>60&&ch>28) d.innerHTML='<div class="lbl">'+esc(k.name)+'<br><span style="opacity:.8">'+fmt(k.size)+'</span></div>';
+      else if(cw>28&&ch>18) d.innerHTML='<div class="lbl">'+esc(k.name)+'</div>';
+      tipify(d,k);
+    }
+    el.appendChild(d);
+    if(horizontal) x+=cw; else y+=ch;
+  }
+}
+function tipify(el,node){
+  el.onmousemove=e=>{
+    tip.style.display='block';
+    tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY+14)+'px';
+    tip.innerHTML='<b>'+esc(node.path)+'</b><span>'+node.language+' &middot; '+fmt(node.size)+' &middot; '+node.loc+' LOC'+(node.commits?' &middot; '+node.commits+' commits':'')+'</span>';
+  };
+  el.onmouseleave=()=>{tip.style.display='none';};
+}
+window.addEventListener('resize',render);
+render();
+</script>
+</body></html>
